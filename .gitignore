@@ -6,3 +6,4 @@
 /tests/.pytest_cache
 ~$*_test_case.xlsx
 .idea
+.idea/**
