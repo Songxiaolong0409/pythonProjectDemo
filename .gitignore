@@ -4,4 +4,5 @@
 /.pytest_cache
 /report/**
 /tests/.pytest_cache
-～*
+~$*_test_case.xlsx
+.idea
