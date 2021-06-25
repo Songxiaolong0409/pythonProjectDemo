@@ -1,0 +1,7 @@
+/logs
+/bin
+/lib
+/.pytest_cache
+/report/**
+/tests/.pytest_cache
+～*
