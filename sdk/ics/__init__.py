@@ -35,11 +35,16 @@ class Environment(object):
 
     @staticmethod
     def __pre():
+        # return Environment(
+        #     "http://47.56.210.117:48279",
+        #     "console_911427",
+        #     "Fih793987",
+        #     "8540868")
         return Environment(
             "http://47.56.210.117:48279",
-            "console_911427",
-            "Fih793987",
-            "8540868")
+            "PSSPatient_084412",
+            "Fih987113",
+            "29893215")
 
     @staticmethod
     def get_ics_environment(environment):

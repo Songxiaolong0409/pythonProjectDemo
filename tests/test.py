@@ -67,6 +67,6 @@ def test_method3():
 if __name__ == "__main__":
     pytest.main(["test.py",
                  "-s",
-                 "--e=test",
+                 "--e=pre",
                  "--html=../report/report.html",
                  "--self-contained-html"])

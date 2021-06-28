@@ -5,12 +5,10 @@
       <excludeFolder url="file://$MODULE_DIR$/.idea/httpRequests" />
       <excludeFolder url="file://$MODULE_DIR$/tests/.pytest_cache" />
       <excludeFolder url="file://$MODULE_DIR$/.pytest_cache" />
-      <excludeFolder url="file://$MODULE_DIR$/bin" />
-      <excludeFolder url="file://$MODULE_DIR$/lib" />
       <excludeFolder url="file://$MODULE_DIR$/logs" />
       <excludeFolder url="file://$MODULE_DIR$/report" />
     </content>
-    <orderEntry type="inheritedJdk" />
+    <orderEntry type="jdk" jdkName="Python 3.7 (venv)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PackageRequirementsSettings">

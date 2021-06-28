@@ -105,8 +105,8 @@ def pytest_collection_modifyitems(session, items):
 
     # 将用例名拿出来存入新列表
     new_items = []
-    for item in items:
-        for excel_item in excel_items:
+    for excel_item in excel_items:
+        for item in items:
             if excel_item == item.name:
                 new_items.append(item)
 

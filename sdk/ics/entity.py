@@ -43,11 +43,10 @@ class Result(object):
 
     def __init__(self, string):
         response = json.loads(string)
-        self.code = response[ResultEnum.CODE.value]
-        self.success = response[ResultEnum.SUCCESS.value]
-        self.message = response[ResultEnum.MESSAGE.value]
-        if self.code == 200:
-            self.data = response[ResultEnum.DATA.value]
+        self.code = response.get(ResultEnum.CODE.value)
+        self.success = response.get(ResultEnum.SUCCESS.value)
+        self.message = response.get(ResultEnum.MESSAGE.value)
+        self.data = response.get(ResultEnum.DATA.value)
 
 
 class Param(object):
@@ -97,11 +96,11 @@ class User(object):
 
     def __init__(self, string):
         userinfo = string[UserEnum.USER_NAME.value]
-        self.access_token = string[UserEnum.ACCESS_TOKEN.value]
-        self.user_id = userinfo[UserEnum.USER_ID.value]
-        self.client_id = userinfo[UserEnum.CLIENT_ID.value]
-        self.areaCode = userinfo[UserEnum.AREA_CODE.value]
-        self.mobile = userinfo[UserEnum.MOBILE.value]
-        self.username = userinfo[UserEnum.USERNAME.value]
-        self.email = userinfo[UserEnum.EMAIL.value]
-        self.status = userinfo[UserEnum.STATUS.value]
+        self.access_token = string.get(UserEnum.ACCESS_TOKEN.value)
+        self.user_id = userinfo.get(UserEnum.USER_ID.value)
+        self.client_id = userinfo.get(UserEnum.CLIENT_ID.value)
+        self.status = userinfo.get(UserEnum.STATUS.value)
+        self.areaCode = userinfo.get(UserEnum.AREA_CODE.value)
+        self.mobile = userinfo.get(UserEnum.MOBILE.value)
+        self.username = userinfo.get(UserEnum.USERNAME.value)
+        self.email = userinfo.get(UserEnum.EMAIL.value)
