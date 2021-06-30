@@ -52,16 +52,22 @@ def pytest_runtest_makereport(item, call):
     report.nodeid = report.nodeid.encode("utf-8").decode("unicode_escape")  # 设置编码显示中文
     if report.when == "call":
         # always add url to report
-        extra.append(pytest_html.extras.url("http://www.example.com/"))
-        xfail = hasattr(report, "wasxfail")
-        if (report.skipped and xfail) or (report.failed and not xfail):
+        # extra.append(pytest_html.extras.url("http://www.example.com/"))
+        # xfail = hasattr(report, "wasxfail")
+        # if (report.skipped and xfail) or (report.failed and not xfail):
             # only add additional html on failure
-
-            extra.append(pytest_html.extras.html("<div class='empty log'>" + report.longreprtext + "<br/></div>"))
-            extra.append(pytest_html.extras.html("<div class='empty log'>" + report.caplog + "<br/></div>"))
-            extra.append(pytest_html.extras.html("<div class='empty log'>"+report.capstderr+"<br/></div>"))
+            # extra.append(pytest_html.extras.html("<div class='empty log'>" + report.longreprtext + "<br/></div>"))
+            # extra.append(pytest_html.extras.html("<div class='empty log'>" + report.caplog + "<br/></div>"))
+            # extra.append(pytest_html.extras.html("<div class='empty log'>"+report.capstderr+"<br/></div>"))
             # extra.append(pytest_html.extras.json(extra))
         report.extra = extra
+
+
+def pytest_html_results_table_html(report, data):
+    if report.failed:
+        del data[:]
+        data.append(html.div(report.caplog, class_='empty log'))
+        data.append(html.div(report.longreprtext, class_='empty log'))
 
 
 @pytest.mark.optionalhook
