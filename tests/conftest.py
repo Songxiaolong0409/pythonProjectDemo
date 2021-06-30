@@ -3,13 +3,16 @@ from time import strftime
 import pytest
 from py.xml import html
 
+import tests
 from common.excelUtil import get_excel_test_case
-from tests import test_case_file, test_case
+from tests import test_case
 
 
 def pytest_addoption(parser):
-    # 自定义命令行参数
-    # --e 切换环境参数 dev、test、pre、prd  default test
+    """
+    自定义命令行参数
+    --e 切换环境参数 dev、test、pre、prd  default test
+    """
     parser.addoption("--e", action="store", default="test")
 
 
@@ -102,6 +105,7 @@ def pytest_collection_modifyitems(session, items):
     session 下的items 可改变pytest执行的测试用例
     items 改变执行顺序
     """
+    test_case_file = session.config.args[0][:-7]+"_test_case.xlsx"
     # 从excel里读取测试用例放入全局
     excel_test_case = get_excel_test_case(test_case_file)
 

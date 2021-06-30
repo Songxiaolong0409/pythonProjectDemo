@@ -10,3 +10,5 @@ class ProfilesActiveEnum(Enum):
     PRE = "pre"
 
     PRD = "prd"
+
+    AWS = "aws"
