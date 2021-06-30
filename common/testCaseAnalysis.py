@@ -92,7 +92,7 @@ def __get_test_case_val_recursion(data=dict, spel_key=dict, i=1):
     if isinstance(data, list):
         spel_val = data.__getitem__(0)[spel_key[i]]
     else:
-        spel_val = data[spel_key[i]]
+        spel_val = data.get(spel_key[i])
     if isinstance(spel_val, dict):
         return __get_test_case_val_recursion(spel_val, spel_key, i+1)
     elif isinstance(spel_val, list):

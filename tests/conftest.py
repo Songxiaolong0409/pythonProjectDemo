@@ -64,10 +64,12 @@ def pytest_runtest_makereport(item, call):
 
 
 def pytest_html_results_table_html(report, data):
+    del data[:]
     if report.failed:
-        del data[:]
         data.append(html.div(report.caplog, class_='empty log'))
         data.append(html.div(report.longreprtext, class_='empty log'))
+    else:
+        data.append(html.div(report.sections.__getitem__(report.sections.__len__()-1), class_='empty log'))
 
 
 @pytest.mark.optionalhook
