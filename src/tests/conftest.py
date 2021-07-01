@@ -3,9 +3,8 @@ from time import strftime
 import pytest
 from py.xml import html
 
-import tests
-from common.excelUtil import get_excel_test_case
-from tests import test_case
+from src.main.common import get_excel_test_case
+from src.tests import test_case
 
 
 def pytest_addoption(parser):

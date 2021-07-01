@@ -6,8 +6,8 @@ import os
 
 import xlrd as xlrd
 
-from common.testCase import TestCase
-from common.logging import log
+from src.main.common.testCase import TestCase
+from src.main.common.logging import log
 
 
 def get_file(filename):

@@ -1,7 +1,30 @@
 import json
 from enum import Enum
 
-from sdk.ics import Environment, AREA_CODE
+from src.tests import api_result
+
+
+def get_response(response):
+    try:
+        res = Result(response.text)
+        if res.code == 200:
+            return User(res.data)
+        elif res.code == 500:
+            return res.message
+    except Exception as e:
+        return "请求异常:" + e
+
+
+def pytest_assert(response, param_key):
+    try:
+        if response.status_code == 200:
+            res = Result(response.text)
+            api_result.__setitem__(param_key, res)
+            assert res.code == 200, res.message
+        else:
+            assert False, response.text
+    except Exception as e:
+        assert False, e.args
 
 
 class ResultEnum(Enum):
@@ -9,18 +32,6 @@ class ResultEnum(Enum):
     SUCCESS = "success"
     MESSAGE = "message"
     DATA = "data"
-
-
-class ParamEnum(Enum):
-    URL = "url"
-    CLIENT_ID = "client_id"
-    CLIENT_SECRET = "client_secret"
-    GRANT_TYPE = "grant_type"
-    USER_TYPE = "userType"
-    AREA_CODE = "areaCode"
-    MOBILE = "mobile"
-    USERNAME = "username"
-    PASSWORD = "password"
 
 
 class UserEnum(Enum):
@@ -47,38 +58,6 @@ class Result(object):
         self.success = response.get(ResultEnum.SUCCESS.value)
         self.message = response.get(ResultEnum.MESSAGE.value)
         self.data = response.get(ResultEnum.DATA.value)
-
-
-class Param(object):
-
-    __attr__ = [
-        ParamEnum.URL,
-        ParamEnum.CLIENT_ID,
-        ParamEnum.CLIENT_SECRET,
-        ParamEnum.GRANT_TYPE,
-        ParamEnum.USER_TYPE,
-        ParamEnum.AREA_CODE,
-        ParamEnum.MOBILE,
-        ParamEnum.USERNAME,
-        ParamEnum.PASSWORD,
-    ]
-
-    def __init__(self, grant_type, area_code, mobile, username, password,
-                 environment):
-        t = Environment.get_ics_environment(environment)
-
-        if area_code == AREA_CODE:
-            area_code = "%2B86"
-
-        self.url = t.url
-        self.client_id = t.client_id
-        self.client_secret = t.client_secret
-        self.userType = t.usertype
-        self.grant_type = grant_type
-        self.areaCode = area_code
-        self.mobile = mobile
-        self.username = username
-        self.password = password
 
 
 class User(object):

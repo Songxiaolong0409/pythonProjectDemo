@@ -7,7 +7,7 @@ log = logging.getLogger(__name__)
 log.setLevel(level)
 
 # handler = logging.FileHandler("test.log")
-handler = TimedRotatingFileHandler("../logs/test.log")
+handler = TimedRotatingFileHandler("../../../logs/test.log")
 handler.suffix = "%Y%m%d"
 handler.setLevel(level)
 

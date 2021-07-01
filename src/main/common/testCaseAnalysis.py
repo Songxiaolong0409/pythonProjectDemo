@@ -4,8 +4,8 @@ excel里的testcase，如果含有变量，则把变量替换成参数
 import json
 import sys
 
-from common.logging import log
-from tests.conftest import test_case
+from src.main.common.logging import log
+from src.tests import test_case
 
 
 def test_case_analysis(api_result=dict, param_key=dict):

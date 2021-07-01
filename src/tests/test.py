@@ -3,16 +3,16 @@ import sys
 
 import pytest
 
-from common.testCaseAnalysis import test_case_analysis
-from sdk.ics.entity import Result
-from sdk.ics.ics import login_username_pwd
-from common.logging import log
-from tests import api_result
+from src.main.common import test_case_analysis
+from src.main import Result
+from src.main.ics.icsApi import login
+from src.main.common.logging import log
+from src.tests import api_result
 
 
 @pytest.fixture(scope="session")
 def ics_login(option_e):
-    result = login_username_pwd(option_e, "admin", "Fih123456")
+    result = login(option_e)
 
     if isinstance(result, str):
         assert False, result

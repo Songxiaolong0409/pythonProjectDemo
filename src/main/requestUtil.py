@@ -1,8 +1,8 @@
 import requests
 
-from common.logging import log
-from common.testCaseAnalysis import __is_json_array, __is_json
-from sdk.environment import Environment
+from src.main.common.logging import log
+from src.main.common import __is_json_array, __is_json
+from src.main.environment import Environment
 
 
 def http(method, url, token, data):
@@ -34,12 +34,12 @@ class HttpApi(object):
         "url"
     ]
 
-    def __init__(self, param_data, token, environment, req_action, impl_obj):
+    def __init__(self, param_data, token, environment, req_action, impl_obj=Environment):
         self.param_data = param_data
         self.token = token
         self.environment = environment
         self.req_action = req_action
-        self.url = Environment.get_environment(self.environment, impl_obj) + self.req_action
+        self.url = Environment.get_environment(impl_obj, environment).url + self.req_action
 
     def post(self):
         log.info("请求地址:%s", self.url)
