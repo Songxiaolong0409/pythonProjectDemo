@@ -3,7 +3,7 @@ from time import strftime
 import pytest
 from py.xml import html
 
-from src.main.common import get_excel_test_case
+from src.main.common.excelUtil import get_excel_test_case
 from src.tests import test_case
 
 

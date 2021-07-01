@@ -3,8 +3,8 @@ import sys
 
 import pytest
 
-from src.main.common import test_case_analysis
 from src.main import Result
+from src.main.common.testCaseAnalysis import test_case_analysis
 from src.main.ics.icsApi import login
 from src.main.common.logging import log
 from src.tests import api_result

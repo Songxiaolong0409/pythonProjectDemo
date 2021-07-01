@@ -2,7 +2,7 @@
 Excel操作工具
 主要是用来获取excel里的测试用例数据
 """
-import os
+import sys
 
 import xlrd as xlrd
 
@@ -14,7 +14,9 @@ def get_file(filename):
     """新版xlrd报 Excel xlsx file； not supported
     解决办法：安装旧版本 pip install xlrd == 1.2.0"""
     #  拼接读取文件的绝对路径
-    case_path = os.path.join(os.path.dirname(__file__), r'../'+filename)
+
+    # case_path = os.path.join(os.path.dirname(__file__), r'../'+filename)
+    case_path = sys.path[3] + "/"+filename
     #  读取文件
     book = xlrd.open_workbook(case_path)
     return book

@@ -7,7 +7,7 @@ class ICS(Environment):
         pass
 
     def test(self):
-        return self.__init__(
+        return ICS(
             url="http://121.40.88.181:48279",
             client_id="console_911427",
             client_secret="Fih793987",
@@ -18,7 +18,7 @@ class ICS(Environment):
         )
 
     def pre(self):
-        return self.__init__(
+        return ICS(
             url="http://47.56.210.117:48279",
             client_id="console_911427",
             client_secret="Fih793987",

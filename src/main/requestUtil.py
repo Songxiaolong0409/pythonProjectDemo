@@ -1,7 +1,7 @@
 import requests
 
 from src.main.common.logging import log
-from src.main.common import __is_json_array, __is_json
+from src.main.common.testCaseAnalysis import __is_json_array, __is_json
 from src.main.environment import Environment
 
 

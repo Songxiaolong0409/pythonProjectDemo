@@ -32,13 +32,21 @@ class Environment(object):
         Active.PASSWORD,
     ]
 
-    def __init__(self, url, client_id, client_secret, usertype, grant_type,
-                 area_code, mobile, username, password):
+    def __init__(self,
+                 url=None,
+                 client_id=None,
+                 client_secret=None,
+                 usertype=None,
+                 grant_type=None,
+                 area_code=None,
+                 mobile=None,
+                 username=None,
+                 password=None):
         self.url = url
         self.client_id = client_id
         self.client_secret = client_secret
         self.grant_type = grant_type
-        self.usertype = usertype
+        self.userType = usertype
         self.areaCode = area_code
         self.mobile = mobile
         self.username = username
